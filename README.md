@@ -7,7 +7,8 @@ sudo -i
 xbps-install -Syu void-repo-multilib void-repo-multilib-nonfree void-repo-nonfree
 xbps-install -Syu glibc-32bit libX11-32bit pam-libs-32bit
 chmod 755 *
-cp libstdc++.so.5 /usr/lib32 # перенести бинарный пакет в lib32 (отсутствует в void)
+cp libstdc++.so.5.0.7 /usr/lib32 # перенести бинарный пакет в lib32 (отсутствует в void)
+ln -s /usr/lib32/libstdc++.so.5.0.7 /usr/lib32/libstdc++.so.5
 ./snx_install_linux30.sh
 ```
 
