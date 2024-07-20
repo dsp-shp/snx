@@ -1,11 +1,13 @@
 # SSL Network Extender
-Подробнее см. [ответ](https://unix.stackexchange.com/questions/450229/getting-checkpoint-vpn-ssl-network-extender-working-in-the-command-line)
+Подробнее см. ["Настройка SNX"](https://unix.stackexchange.com/questions/450229/getting-checkpoint-vpn-ssl-network-extender-working-in-the-command-line) и ["Маппинг библиотек в Void Linux"](https://github.com/void-linux/void-packages/blob/master/common/shlibs)
 
 ### Установка
 ```bash
 sudo -i
-dpkg --add-architecture i386
-apt install libc6:i386 libx11-6:i386 libpam0g:i386 libstdc++5:i386
+xbps-install -Syu void-repo-multilib void-repo-multilib-nonfree void-repo-nonfree
+xbps-install -Syu glibc-32bit libX11-32bit pam-libs-32bit
+chmod 755 *
+cp libstdc++.so.5 /usr/lib32 # перенести бинарный пакет в lib32 (отсутствует в void)
 ./snx_install_linux30.sh
 ```
 
